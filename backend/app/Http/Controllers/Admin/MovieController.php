@@ -17,6 +17,7 @@ class MovieController extends Controller
     public function index(): View
     {
         //
+        return view('admin.movies.index');
     }
 
     /**
@@ -27,6 +28,7 @@ class MovieController extends Controller
     public function create(): View
     {
         //
+        return view('admin.movies.create');
     }
 
     /**
@@ -49,6 +51,7 @@ class MovieController extends Controller
     public function show($id): View
     {
         //
+        return view('admin.movies.show');
     }
 
     /**
@@ -60,6 +63,7 @@ class MovieController extends Controller
     public function edit($id): View
     {
         //
+        return view('admin.movies.edit');
     }
 
     /**
