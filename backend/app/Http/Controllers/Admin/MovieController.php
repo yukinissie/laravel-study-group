@@ -29,7 +29,6 @@ class MovieController extends Controller
      */
     public function create(): View
     {
-        //
         return view('admin.movies.create');
     }
 
@@ -41,7 +40,13 @@ class MovieController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //
+        $createRequest = [
+            'title' => $request->title,
+            'image_url' => $request->image_url
+        ];
+        Movie::create($createRequest);
+
+        return redirect(route('admin.movies.index'));
     }
 
     /**
