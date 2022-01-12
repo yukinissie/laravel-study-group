@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Movie;
 
 class MoviesTableSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class MoviesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Movie::factory()->count(15)->create();
     }
 }

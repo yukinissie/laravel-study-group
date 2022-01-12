@@ -6,11 +6,11 @@
     <td>タイトル</td>
     <td>画像</td>
   </tr>
+  @foreach($movies as $movie)
   <tr>
-    @foreach($movies as $movie)
     <td>{{ $movie->id }}</td>
     <td>{{ $movie->title }}</td>
     <td>{{ $movie->image_url }}</td>
-    @endforeach
   </tr>
+  @endforeach
 </table>
