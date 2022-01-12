@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -16,8 +17,9 @@ class MovieController extends Controller
      */
     public function index(): View
     {
-        //
-        return view('admin.movies.index');
+        $movies = Movie::all();
+
+        return view('admin.movies.index')->with('movies', $movies);
     }
 
     /**
