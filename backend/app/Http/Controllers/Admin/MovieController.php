@@ -57,8 +57,9 @@ class MovieController extends Controller
      */
     public function show($id): View
     {
-        //
-        return view('admin.movies.show');
+        $movie = Movie::find($id);
+
+        return view('admin.movies.show')->with('movie', $movie);
     }
 
     /**
@@ -69,8 +70,9 @@ class MovieController extends Controller
      */
     public function edit($id): View
     {
-        //
-        return view('admin.movies.edit');
+        $movie = Movie::find($id);
+
+        return view('admin.movies.edit')->with('movie', $movie);
     }
 
     /**
@@ -82,7 +84,13 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id): RedirectResponse
     {
-        //
+        $updateRequest = [
+            'title' => $request->title,
+            'image_url' => $request->image_url
+        ];
+        Movie::where('id', $id)->update($updateRequest);
+
+        return redirect(route('admin.movies.show', ['movie' => $id]));
     }
 
     /**
@@ -93,6 +101,8 @@ class MovieController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        //
+        Movie::where('id', $id)->delete();
+
+        return redirect(route('admin.movies.index'));
     }
 }
