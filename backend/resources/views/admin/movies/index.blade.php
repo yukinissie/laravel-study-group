@@ -4,7 +4,7 @@
   <tr>
     <td>ID</td>
     <td>タイトル</td>
-    <td>画像</td>
+    <td>画像URL</td>
   </tr>
   @foreach($movies as $movie)
   <tr>

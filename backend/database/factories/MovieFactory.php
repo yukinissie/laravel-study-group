@@ -18,7 +18,7 @@ class MovieFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
-            'image_url' => $this->faker->word
+            'image_url' => $this->faker->imageUrl()
         ];
     }
 }
