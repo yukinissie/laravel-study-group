@@ -1,5 +1,5 @@
 <nav>
-  <a href="#">
+  <a href="{{ route('admin.movies.index') }}">
     Movies
   </a>
 </nav>

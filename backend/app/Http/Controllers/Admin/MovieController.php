@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateMovieRequest;
+use App\Http\Requests\UpdateMovieRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Movie;
@@ -38,12 +39,9 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(CreateMovieRequest $request): RedirectResponse
     {
-        $createRequest = [
-            'title' => $request->title,
-            'image_url' => $request->image_url
-        ];
+        $createRequest = $request->validated();
         Movie::create($createRequest);
 
         return redirect(route('admin.movies.index'));
@@ -55,7 +53,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id): View
+    public function show(Int $id): View
     {
         $movie = Movie::find($id);
 
@@ -68,7 +66,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id): View
+    public function edit(Int $id): View
     {
         $movie = Movie::find($id);
 
@@ -82,12 +80,9 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(UpdateMovieRequest $request, Int $id): RedirectResponse
     {
-        $updateRequest = [
-            'title' => $request->title,
-            'image_url' => $request->image_url
-        ];
+        $updateRequest = $request->validated();
         Movie::where('id', $id)->update($updateRequest);
 
         return redirect(route('admin.movies.show', ['movie' => $id]));
@@ -99,7 +94,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(Int $id): RedirectResponse
     {
         Movie::where('id', $id)->delete();
 
