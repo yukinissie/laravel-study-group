@@ -5,13 +5,11 @@
     <title>Laravel-Movies</title>
   </head>
   <body>
-    <div>
-      <header>
-        @include('header')
-      </header>
-      <main>
-        @yield('content')
-      </main>
-    </div>
+    <header>
+      @include('header')
+    </header>
+    <main>
+      @yield('content')
+    </main>
   </body>
 </html>
