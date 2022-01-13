@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('header')
+@section('content')
   <h1>Create</h1>
   {!! Form::open(['route' => 'admin.movies.store']) !!}
     {!! Form::label('タイトル') !!}

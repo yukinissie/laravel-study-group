@@ -6,8 +6,12 @@
   </head>
   <body>
     <div>
-      @yield('header')
-      @yield('content')
+      <header>
+        @include('header')
+      </header>
+      <main>
+        @yield('content')
+      </main>
     </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('header')
+@section('content')
   <h1>Edit</h1>
   {!! Form::model($movie, ['method'=>'put', 'route' => ['admin.movies.update', 'movie' => $movie->id]]) !!}
     {!! Form::label('タイトル') !!}

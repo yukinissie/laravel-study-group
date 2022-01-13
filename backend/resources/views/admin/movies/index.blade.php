@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('header')
+@section('content')
   <h1>Index</h1>
   <a href="{{ route('admin.movies.create') }}">作成</a>
 
