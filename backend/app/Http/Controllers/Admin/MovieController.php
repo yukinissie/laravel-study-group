@@ -29,6 +29,8 @@ class MovieController extends Controller
      */
     public function create(): View
     {
+        $movie = new Movie;
+
         return view('admin.movies.create');
     }
 
