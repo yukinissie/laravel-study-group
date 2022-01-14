@@ -4,7 +4,12 @@
   <div class="w-100 d-flex justify-content-between align-items-center flex-column gap-4">
     <div class="w-100 d-flex justify-content-between align-items-end">
       <h2>映画一覧</h2>
-      <a class="btn border border-primary text-primary" href="{{ route('admin.movies.create') }}">作成</a>
+      <a
+        class="btn border border-primary text-primary"
+        href="{{ route('admin.movies.create') }}"
+      >
+        作成
+      </a>
     </div>
     <div>
     <div class="container w-100">
