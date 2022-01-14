@@ -8,7 +8,7 @@
     <header>
       @include('header')
     </header>
-    <main>
+    <main class=".p-120">
       @yield('content')
     </main>
   </body>
