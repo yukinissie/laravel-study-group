@@ -8,9 +8,8 @@
         Form::model(
           $movie,
           [
-            'method'=>'put',
+            'method' => 'put',
             'route' => ['admin.movies.update', 'movie' => $movie->id],
-            'route' => 'admin.movies.store',
             'class' => 'w-100 d-flex flex-column gap-3',
             'style' => 'max-width: 400px;'
           ]
