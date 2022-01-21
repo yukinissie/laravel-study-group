@@ -18,7 +18,6 @@ class MovieController extends Controller
      */
     public function index(): View
     {
-        // $movies = Movie::all();
         $movieInstance = new Movie;
         $movies = $movieInstance->getAllMovies();
 
@@ -44,7 +43,6 @@ class MovieController extends Controller
     public function store(CreateMovieRequest $request): RedirectResponse
     {
         $createRequest = $request->validated();
-        // Movie::create($createRequest);
         $movieInstance = new Movie;
         $movieInstance->createNewMovie($createRequest);
 
@@ -59,7 +57,6 @@ class MovieController extends Controller
      */
     public function show(Int $id): View
     {
-        // $movie = Movie::find($id);
         $movieInstance = new Movie;
         $movie = $movieInstance->getMovie($id);
 
@@ -74,7 +71,6 @@ class MovieController extends Controller
      */
     public function edit(Int $id): View
     {
-        // $movie = Movie::find($id);
         $movieInstance = new Movie;
         $movie = $movieInstance->getMovie($id);
 
@@ -91,7 +87,6 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Int $id): RedirectResponse
     {
         $updateRequest = $request->validated();
-        // Movie::where('id', $id)->update($updateRequest);
         $movieInstance = new Movie;
         $movieInstance->updateMovie($updateRequest, $id);
 
@@ -106,10 +101,10 @@ class MovieController extends Controller
      */
     public function destroy(Int $id): RedirectResponse
     {
-        // Movie::where('id', $id)->delete();
         $movieInstance = new Movie;
         $movieInstance->deleteMovie($id);
 
         return redirect(route('admin.movies.index'));
     }
 }
+
