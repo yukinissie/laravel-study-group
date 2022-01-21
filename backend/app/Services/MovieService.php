@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\MovieRepositoryInterface;
 use App\Http\Requests\CreateMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
+use Illuminate\Database\Eloquent\Collection;
 
 class MovieService implements MovieServiceInterface
 {
