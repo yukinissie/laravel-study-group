@@ -19,7 +19,7 @@ class MovieRepository implements MovieRepositoryInterface
 
     public function getMovie(Int $id): Model
     {
-        return Movie::find($id);
+        return Movie::findOrFail($id);
     }
 
     public function updateMovie(Array $updateRequest, Int $id): Void
