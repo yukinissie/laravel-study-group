@@ -2,31 +2,46 @@
 
 namespace App\Services;
 
+use App\Repositries\MovieRepositoryInterface;
+use App\Http\Requests\CreateMovieRequest;
+use App\Http\Requests\UpdateMovieRequest;
+
 class MovieService implements MovieServiceInterface
 {
-    public function getAllMovies(): Collection
-    {
-        return Movie::all();
+    private $movie_repository;
+
+    public function __construct(
+        MovieRepositoryInterface $movie_repository
+    ) {
+        $this->movie_repository = $movie_repository;
     }
 
-    public function createNewMovie(Array $createRequest): Void
+
+    public function getAllMovies(): Collection
     {
-        Movie::create($createRequest);
+        return $this->movie_repositry->getAllMovies();
+    }
+
+    public function createNewMovie(CreateMovieRequest $request): Void
+    {
+        $createRequest = $request->validated();
+        $this->movie_repositry->createNewMovie($createRequest);
     }
 
     public function getMovie(Int $id): Model
     {
-        return Movie::find($id);
+        return $this->movie_repositry->getMovie($id);
     }
 
-    public function updateMovie(Array $updateRequest, Int $id): Void
+    public function updateMovie(UpdateMovieRequest $request, Int $id): Void
     {
-        Movie::where('id', $id)->update($updateRequest);
+        $updateRequest = $request->validated();
+        $this->movie_repository->updateMovie($updateRequest);
     }
 
     public function deleteMovie(Int $id): Void
     {
-        Movie::where('id', $id)->delete();
+        $this->movie_repositry->deleteMovie($id);
     }
 }
 
