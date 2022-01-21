@@ -11,6 +11,13 @@ use App\Models\Movie;
 
 class MovieController extends Controller
 {
+    private $movie;
+
+    public function __construct()
+    {
+        $this->movie = new Movie;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +25,7 @@ class MovieController extends Controller
      */
     public function index(): View
     {
-        $movieInstance = new Movie;
-        $movies = $movieInstance->getAllMovies();
+        $movies = $this->movie->getAllMovies();
 
         return view('admin.movies.index')->with('movies', $movies);
     }
@@ -43,8 +49,7 @@ class MovieController extends Controller
     public function store(CreateMovieRequest $request): RedirectResponse
     {
         $createRequest = $request->validated();
-        $movieInstance = new Movie;
-        $movieInstance->createNewMovie($createRequest);
+        $this->movie->createNewMovie($createRequest);
 
         return redirect(route('admin.movies.index'));
     }
@@ -57,8 +62,7 @@ class MovieController extends Controller
      */
     public function show(Int $id): View
     {
-        $movieInstance = new Movie;
-        $movie = $movieInstance->getMovie($id);
+        $movie = $this->movie->getMovie($id);
 
         return view('admin.movies.show')->with('movie', $movie);
     }
@@ -71,8 +75,7 @@ class MovieController extends Controller
      */
     public function edit(Int $id): View
     {
-        $movieInstance = new Movie;
-        $movie = $movieInstance->getMovie($id);
+        $movie = $this->movie->getMovie($id);
 
         return view('admin.movies.edit')->with('movie', $movie);
     }
@@ -87,8 +90,7 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Int $id): RedirectResponse
     {
         $updateRequest = $request->validated();
-        $movieInstance = new Movie;
-        $movieInstance->updateMovie($updateRequest, $id);
+        $this->movie->updateMovie($updateRequest, $id);
 
         return redirect(route('admin.movies.show', ['movie' => $id]));
     }
@@ -101,8 +103,7 @@ class MovieController extends Controller
      */
     public function destroy(Int $id): RedirectResponse
     {
-        $movieInstance = new Movie;
-        $movieInstance->deleteMovie($id);
+        $this->movie->deleteMovie($id);
 
         return redirect(route('admin.movies.index'));
     }
