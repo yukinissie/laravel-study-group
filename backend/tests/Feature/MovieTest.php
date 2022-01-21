@@ -35,4 +35,15 @@ class MovieTest extends TestCase
         $response = $this->get('/admin/movies');
         $response->assertStatus(200);
     }
+
+    public function testCreateMovie()
+    {
+        $response = $this->post('/admin/movies', [
+            "title" => "ahi",
+            "image_url" => "https://topaz.dev/_nuxt/img/topaz_logo.ca17fc3.svg"
+        ]);
+
+        $response->assertRedirect('/admin/movies');
+        $response->assertStatus(302);
+    }
 }
