@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositries;
+namespace App\Repositories;
 
 
-interface MovieRepositryInterface
+interface MovieRepositoryInterface
 {
     public function getAllMovies();
     public function createNewMovie(Array $createRequest);
