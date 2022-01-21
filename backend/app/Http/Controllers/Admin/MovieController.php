@@ -19,8 +19,8 @@ class MovieController extends Controller
     public function index(): View
     {
         // $movies = Movie::all();
-        $movie = new Movie;
-        $movies = $movie->getAllModel();
+        $movieInstance = new Movie;
+        $movies = $movieInstance->getAllMovies();
 
         return view('admin.movies.index')->with('movies', $movies);
     }
@@ -44,7 +44,9 @@ class MovieController extends Controller
     public function store(CreateMovieRequest $request): RedirectResponse
     {
         $createRequest = $request->validated();
-        Movie::create($createRequest);
+        // Movie::create($createRequest);
+        $movieInstance = new Movie;
+        $movieInstance->createNewMovie($createRequest);
 
         return redirect(route('admin.movies.index'));
     }
@@ -57,7 +59,9 @@ class MovieController extends Controller
      */
     public function show(Int $id): View
     {
-        $movie = Movie::find($id);
+        // $movie = Movie::find($id);
+        $movieInstance = new Movie;
+        $movie = $movieInstance->getMovie($id);
 
         return view('admin.movies.show')->with('movie', $movie);
     }
@@ -70,7 +74,9 @@ class MovieController extends Controller
      */
     public function edit(Int $id): View
     {
-        $movie = Movie::find($id);
+        // $movie = Movie::find($id);
+        $movieInstance = new Movie;
+        $movie = $movieInstance->getMovie($id);
 
         return view('admin.movies.edit')->with('movie', $movie);
     }
@@ -85,7 +91,9 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Int $id): RedirectResponse
     {
         $updateRequest = $request->validated();
-        Movie::where('id', $id)->update($updateRequest);
+        // Movie::where('id', $id)->update($updateRequest);
+        $movieInstance = new Movie;
+        $movieInstance->updateMovie($updateRequest, $id);
 
         return redirect(route('admin.movies.show', ['movie' => $id]));
     }
@@ -98,7 +106,9 @@ class MovieController extends Controller
      */
     public function destroy(Int $id): RedirectResponse
     {
-        Movie::where('id', $id)->delete();
+        // Movie::where('id', $id)->delete();
+        $movieInstance = new Movie;
+        $movieInstance->deleteMovie($id);
 
         return redirect(route('admin.movies.index'));
     }
