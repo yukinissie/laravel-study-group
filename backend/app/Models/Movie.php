@@ -13,4 +13,9 @@ class Movie extends Model
         'title',
         'image_url'
     ];
+
+    public function getAllModel()
+    {
+      return Movie::all();
+    }
 }

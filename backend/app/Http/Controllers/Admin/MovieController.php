@@ -18,7 +18,9 @@ class MovieController extends Controller
      */
     public function index(): View
     {
-        $movies = Movie::all();
+        // $movies = Movie::all();
+        $movie = new Movie;
+        $movies = $movie->getAllModel();
 
         return view('admin.movies.index')->with('movies', $movies);
     }
