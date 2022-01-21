@@ -23,9 +23,8 @@ class MovieService implements MovieServiceInterface
         return $this->movie_repository->getAllMovies();
     }
 
-    public function createNewMovie(CreateMovieRequest $request): Void
+    public function createNewMovie(Array $createRequest): Void
     {
-        $createRequest = $request->validated();
         $this->movie_repository->createNewMovie($createRequest);
     }
 
@@ -34,9 +33,8 @@ class MovieService implements MovieServiceInterface
         return $this->movie_repository->getMovie($id);
     }
 
-    public function updateMovie(UpdateMovieRequest $request, Int $id): Void
+    public function updateMovie(Array $updateRequest, Int $id): Void
     {
-        $updateRequest = $request->validated();
         $this->movie_repository->updateMovie($updateRequest);
     }
 
