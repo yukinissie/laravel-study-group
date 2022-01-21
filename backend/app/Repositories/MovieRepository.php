@@ -17,7 +17,7 @@ class MovieRepository implements MovieRepositoryInterface
         Movie::create($createRequest);
     }
 
-    public function getMovie(Int $id): Model
+    public function getMovie(Int $id): Movie
     {
         return Movie::findOrFail($id);
     }
