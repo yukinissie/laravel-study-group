@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositries\MovieRepositoryInterface;
+use App\Repositories\MovieRepositoryInterface;
 use App\Http\Requests\CreateMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 
@@ -19,18 +19,18 @@ class MovieService implements MovieServiceInterface
 
     public function getAllMovies(): Collection
     {
-        return $this->movie_repositry->getAllMovies();
+        return $this->movie_repository->getAllMovies();
     }
 
     public function createNewMovie(CreateMovieRequest $request): Void
     {
         $createRequest = $request->validated();
-        $this->movie_repositry->createNewMovie($createRequest);
+        $this->movie_repository->createNewMovie($createRequest);
     }
 
     public function getMovie(Int $id): Model
     {
-        return $this->movie_repositry->getMovie($id);
+        return $this->movie_repository->getMovie($id);
     }
 
     public function updateMovie(UpdateMovieRequest $request, Int $id): Void
@@ -41,7 +41,7 @@ class MovieService implements MovieServiceInterface
 
     public function deleteMovie(Int $id): Void
     {
-        $this->movie_repositry->deleteMovie($id);
+        $this->movie_repository->deleteMovie($id);
     }
 }
 

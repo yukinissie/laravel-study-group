@@ -12,7 +12,7 @@ use App\Services\MovieServiceInterface;
 
 class MovieController extends Controller
 {
-    private MovieServiceInterface $movie_service;
+    private $movie_service;
 
     public function __construct(MovieServiceInterface $movie_service)
     {
