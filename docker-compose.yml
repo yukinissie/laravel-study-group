@@ -59,6 +59,7 @@ services:
         protocol: tcp
         mode: host
     volumes:
+      - ./infra/docker/mysql:/docker-entrypoint-initdb.d
       - type: volume
         source: db-store
         target: /var/lib/mysql
