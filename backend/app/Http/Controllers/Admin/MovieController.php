@@ -91,7 +91,7 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Int $id): RedirectResponse
     {
         $updateRequest = $request->validated();
-        $this->movieService->updateMovie($request, $id);
+        $this->movieService->updateMovie($updateRequest, $id);
 
         return redirect(route('admin.movies.show', ['movie' => $id]));
     }

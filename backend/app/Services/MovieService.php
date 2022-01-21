@@ -36,7 +36,7 @@ class MovieService implements MovieServiceInterface
 
     public function updateMovie(Array $updateRequest, Int $id): Void
     {
-        $this->movieRepository->updateMovie($updateRequest);
+        $this->movieRepository->updateMovie($updateRequest, $id);
     }
 
     public function deleteMovie(Int $id): Void
