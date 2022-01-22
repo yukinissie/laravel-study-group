@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class RepositoryServiceProvider extends ServiseProvider
+class RepositoryServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -16,5 +16,10 @@ class RepositoryServiceProvider extends ServiseProvider
                 );
             },
         );
+    }
+
+    public function boot()
+    {
+        //
     }
 }
