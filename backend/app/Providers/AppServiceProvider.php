@@ -17,15 +17,6 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\MovieRepositoryInterface::class,
             \App\Repositories\MovieRepository::class,
         );
-
-        $this->app->bind(
-            \App\Services\MovieServiceInterface::class,
-            function ($app) {
-                return new \App\Services\MovieService(
-                    $app->make(\App\Repositories\MovieRepositoryInterface::class)
-                );
-            },
-        );
     }
 
     /**
