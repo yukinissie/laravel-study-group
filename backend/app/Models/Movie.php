@@ -40,4 +40,3 @@ class Movie extends Model
         Movie::where('id', $id)->delete();
     }
 }
-

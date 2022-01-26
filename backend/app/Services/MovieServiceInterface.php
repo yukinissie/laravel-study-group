@@ -10,4 +10,3 @@ interface MovieServiceInterface
     public function updateMovie(Array $upadteRequest, Int $id);
     public function deleteMovie(Int $id);
 }
-

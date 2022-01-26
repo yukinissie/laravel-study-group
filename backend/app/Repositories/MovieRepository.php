@@ -33,4 +33,3 @@ class MovieRepository implements MovieRepositoryInterface
         Movie::where('id', $id)->delete();
     }
 }
-

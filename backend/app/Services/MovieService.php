@@ -44,4 +44,3 @@ class MovieService implements MovieServiceInterface
         $this->movieRepository->deleteMovie($id);
     }
 }
-
