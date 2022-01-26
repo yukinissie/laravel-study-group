@@ -7,7 +7,6 @@ use App\Http\Requests\CreateMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use App\Models\Movie;
 use App\Services\MovieServiceInterface;
 
 class MovieController extends Controller
