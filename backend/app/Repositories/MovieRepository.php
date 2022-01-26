@@ -2,40 +2,35 @@
 
 namespace App\Repositories;
 
-use App\Models\Movie AS MovieModal;
-use App\Entities\Movie;
+use App\Models\Movie;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 
 class MovieRepository implements MovieRepositoryInterface
 {
     public function getAllMovies(): Collection
     {
-        return MovieModal::all();
+        return Movie::all();
     }
 
     public function createNewMovie(Array $createRequest): Void
     {
-        MovieModal::create($createRequest);
+        Movie::create($createRequest);
     }
 
-    public function getMovie(Int $id): Movie
+    public function getMovie(Int $id): Model
     {
-        $movie = MovieModal::findOrFail($id);
-        return new Movie(
-            $movie->id,
-            $movie->title,
-            $movie->image_url
-        );
+        return Movie::findOrFail($id);
     }
 
     public function updateMovie(Array $updateRequest, Int $id): Void
     {
-        MovieModal::where('id', $id)->update($updateRequest);
+        Movie::where('id', $id)->update($updateRequest);
     }
 
     public function deleteMovie(Int $id): Void
     {
-        MovieModal::where('id', $id)->delete();
+        Movie::where('id', $id)->delete();
     }
 }
 

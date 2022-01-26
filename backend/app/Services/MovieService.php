@@ -6,7 +6,7 @@ use App\Repositories\MovieRepositoryInterface;
 use App\Http\Requests\CreateMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use Illuminate\Database\Eloquent\Collection;
-use App\Entities\Movie;
+use Illuminate\Database\Eloquent\Model;
 
 class MovieService implements MovieServiceInterface
 {
@@ -29,7 +29,7 @@ class MovieService implements MovieServiceInterface
         $this->movieRepository->createNewMovie($createRequest);
     }
 
-    public function getMovie(Int $id): Movie
+    public function getMovie(Int $id): Model
     {
         return $this->movieRepository->getMovie($id);
     }
