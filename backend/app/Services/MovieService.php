@@ -7,6 +7,9 @@ use App\Http\Requests\CreateMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Dto\Movie\CreateDto;
+use App\Http\Dto\Movie\FindByIdDto;
+use App\Http\Dto\Movie\UpdateDto;
 
 class MovieService implements MovieServiceInterface
 {
@@ -24,23 +27,23 @@ class MovieService implements MovieServiceInterface
         return $this->movieRepository->getAllMovies();
     }
 
-    public function createNewMovie(Array $createRequest): Void
+    public function createNewMovie(CreateDto $createDto): Void
     {
         $this->movieRepository->createNewMovie($createRequest);
     }
 
-    public function getMovie(Int $id): Model
+    public function getMovie(FindById $findByIdDto): Model
     {
-        return $this->movieRepository->getMovie($id);
+        return $this->movieRepository->getMovie($findByIdDto->id);
     }
 
-    public function updateMovie(Array $updateRequest, Int $id): Void
+    public function updateMovie(UpdateDto $updateDto): Void
     {
-        $this->movieRepository->updateMovie($updateRequest, $id);
+        $this->movieRepository->updateMovie($updateDto);
     }
 
-    public function deleteMovie(Int $id): Void
+    public function deleteMovie(FindById $findByIdDto): Void
     {
-        $this->movieRepository->deleteMovie($id);
+        $this->movieRepository->deleteMovie($findByIdDto->id);
     }
 }
