@@ -5,8 +5,8 @@
   {!! Form::text('title', null) !!}
 </div>
 <div class="w-100 d-flex flex-column">
-  {!! Form::label('image_url', '画像URL') !!}
-  {!! Form::text('image_url', null) !!}
+  {!! Form::label('imageUrl', '画像URL') !!}
+  {!! Form::text('imageUrl', null) !!}
 </div>
 {!!
   Form::submit(
