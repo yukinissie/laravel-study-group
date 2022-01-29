@@ -12,6 +12,7 @@ use App\Http\Dto\Movie\CreateDto;
 use App\Http\Dto\Movie\FindByIdDto;
 use App\Http\Dto\Movie\UpdateDto;
 use App\Http\Presenters\Movie\IndexPresenter;
+use App\Http\Presenters\Movie\FindByIdPresenter;
 
 class MovieController extends Controller
 {
@@ -67,14 +68,14 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Int $id): View
+    public function show(Int $id, FindByIdPresenter $presenter): View
     {
         $findByIdDto = new FindByIdDto([
             'id' => $id
         ]);
         $movie = $this->movieService->getMovie($findByIdDto);
 
-        return view('admin.movies.show')->with('movie', $movie);
+        return view('admin.movies.show')->with('movie', $presenter->output($movie));
     }
 
     /**
@@ -83,14 +84,14 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Int $id): View
+    public function edit(Int $id, FindByIdPresenter $presenter): View
     {
         $findByIdDto = new FindByIdDto([
             'id' => $id
         ]);
         $movie = $this->movieService->getMovie($findByIdDto);
 
-        return view('admin.movies.edit')->with('movie', $movie);
+        return view('admin.movies.edit')->with('movie', $presenter->output($movie));
     }
 
     /**

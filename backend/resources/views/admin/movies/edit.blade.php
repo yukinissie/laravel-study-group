@@ -9,7 +9,7 @@
           $movie,
           [
             'method' => 'put',
-            'route' => ['admin.movies.update', 'movie' => $movie->id],
+            'route' => ['admin.movies.update', 'movie' => $movie['id']],
             'class' => 'w-100 d-flex flex-column gap-3',
             'style' => 'max-width: 400px;'
           ]
