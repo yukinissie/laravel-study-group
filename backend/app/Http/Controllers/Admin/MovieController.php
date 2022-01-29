@@ -8,10 +8,13 @@ use App\Http\Requests\UpdateMovieRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Services\MovieServiceInterface;
+use App\Http\Dto\Movie\CreateDto;
+use App\Http\Dto\Movie\FindByIdDto;
+use App\Http\Dto\Movie\UpdateDto;
 
 class MovieController extends Controller
 {
-    private $movieService;
+    private MovieServiceInterface $movieService;
 
     public function __construct(MovieServiceInterface $movieService)
     {
@@ -48,8 +51,11 @@ class MovieController extends Controller
      */
     public function store(CreateMovieRequest $request): RedirectResponse
     {
-        $createRequest = $request->validated();
-        $this->movieService->createNewMovie($createRequest);
+        $createDto = new CreateDto([
+            'title' => $request->title,
+            'imageUrl' => $request->imageUrl
+        ]);
+        $this->movieService->createNewMovie($createDto);
 
         return redirect(route('admin.movies.index'));
     }
@@ -62,7 +68,10 @@ class MovieController extends Controller
      */
     public function show(Int $id): View
     {
-        $movie = $this->movieService->getMovie($id);
+        $findByIdDto = new FindById([
+            'id' => $id
+        ]);
+        $movie = $this->movieService->getMovie($findByIdDto);
 
         return view('admin.movies.show')->with('movie', $movie);
     }
@@ -75,7 +84,10 @@ class MovieController extends Controller
      */
     public function edit(Int $id): View
     {
-        $movie = $this->movieService->getMovie($id);
+        $findByIdDto = new FindById([
+            'id' => $id
+        ]);
+        $movie = $this->movieService->getMovie($findByIdDto);
 
         return view('admin.movies.edit')->with('movie', $movie);
     }
@@ -90,7 +102,12 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Int $id): RedirectResponse
     {
         $updateRequest = $request->validated();
-        $this->movieService->updateMovie($updateRequest, $id);
+        $updateDto = new UpdateDto([
+            'id' => $id,
+            'title' => $request->title,
+            'imageUrl' => $request->imageUrl
+        ]);
+        $this->movieService->updateMovie($updateDto);
 
         return redirect(route('admin.movies.show', ['movie' => $id]));
     }
@@ -103,7 +120,10 @@ class MovieController extends Controller
      */
     public function destroy(Int $id): RedirectResponse
     {
-        $this->movieService->deleteMovie($id);
+        $findByIdDto = new FindById([
+            'id' => $id
+        ]);
+        $this->movieService->deleteMovie($findByIdDto);
 
         return redirect(route('admin.movies.index'));
     }
