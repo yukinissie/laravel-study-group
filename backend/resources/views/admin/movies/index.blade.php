@@ -18,15 +18,15 @@
         <a
           class="col d-flex justify-content-between align-items-center flex-column gap-2"
           style="text-decoration: none;"
-          href="{{ route('admin.movies.show', ['movie' => $movie->id]) }}"
+          href="{{ route('admin.movies.show', ['movie' => $movie['id']]) }}"
         >
           <img
             class="rounded"
             style="width: 304px; height: 228px; object-fit: cover;"
-            src="{{ $movie->image_url }}"
+            src="{{ $movie['imageUrl'] }}"
           />
           <h3 class="text-dark">
-            {{ $movie->title }}
+            {{ $movie['title'] }}
           </h3>
         </a>
         @endforeach

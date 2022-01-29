@@ -11,6 +11,7 @@ use App\Services\MovieServiceInterface;
 use App\Http\Dto\Movie\CreateDto;
 use App\Http\Dto\Movie\FindByIdDto;
 use App\Http\Dto\Movie\UpdateDto;
+use App\Http\Presenters\Movie\IndexPresenter;
 
 class MovieController extends Controller
 {
@@ -26,11 +27,11 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): View
+    public function index(IndexPresenter $presenter): View
     {
-        $movies = $this->movieService->getAllMovies();
+        $movieList = $this->movieService->getAllMovies();
 
-        return view('admin.movies.index')->with('movies', $movies);
+        return view('admin.movies.index')->with('movies', $presenter->output($movieList));
     }
 
     /**
