@@ -4,7 +4,7 @@ namespace App\Http\Dto\Movie;
 
 use App\Http\Dto\BaseDto;
 
-class CreateDto extends BaseDto
+class UpdateDto extends BaseDto
 {
     public int $id;
     public string $title;
