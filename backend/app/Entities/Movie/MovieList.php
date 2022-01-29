@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Entities\Movie;
+namespace App\Entities\Movie;
 
-use App\Http\Entities\Movie\Movie;
+use App\Entities\Movie\Movie;
 
 class MovieList
 {

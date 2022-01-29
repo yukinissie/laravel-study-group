@@ -6,8 +6,8 @@ use App\Repositories\MovieRepositoryInterface;
 use App\Http\Dto\Movie\CreateDto;
 use App\Http\Dto\Movie\FindByIdDto;
 use App\Http\Dto\Movie\UpdateDto;
-use App\Http\Entities\Movie\MovieList;
-use App\Http\Entities\Movie\Movie;
+use App\Entities\Movie\MovieList;
+use App\Entities\Movie\Movie;
 
 class MovieService implements MovieServiceInterface
 {

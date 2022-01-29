@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Entities\Movie;
+namespace App\Entities\Movie;
 
 class Movie
 {

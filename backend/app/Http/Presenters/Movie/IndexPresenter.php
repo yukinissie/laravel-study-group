@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Presenters\Movie;
 
-use App\Http\Entities\Movie\MovieList;
-use App\Http\Entities\Movie\Movie;
+use App\Entities\Movie\MovieList;
+use App\Entities\Movie\Movie;
 
 class IndexPresenter
 {
