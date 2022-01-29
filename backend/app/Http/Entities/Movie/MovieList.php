@@ -14,4 +14,9 @@ class MovieList
           return new Movie((object) $movie);
         }, $movies);
     }
+
+    public function getList()
+    {
+        return $this->movies;
+    }
 }

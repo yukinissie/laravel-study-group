@@ -14,4 +14,19 @@ class Movie
         if(isset($movie->title)) $this->title = $movie->title;
         if(isset($movie->image_url)) $this->imageUrl = $movie->image_url;
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
+    }
 }
