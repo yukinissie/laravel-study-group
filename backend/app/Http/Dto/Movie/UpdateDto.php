@@ -6,6 +6,7 @@ use App\Http\Dto\BaseDto;
 
 class CreateDto extends BaseDto
 {
+    public int $id;
     public string $title;
     public string $imageUrl;
 
