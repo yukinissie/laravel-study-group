@@ -68,7 +68,7 @@ class MovieController extends Controller
      */
     public function show(Int $id): View
     {
-        $findByIdDto = new FindById([
+        $findByIdDto = new FindByIdDto([
             'id' => $id
         ]);
         $movie = $this->movieService->getMovie($findByIdDto);
@@ -84,7 +84,7 @@ class MovieController extends Controller
      */
     public function edit(Int $id): View
     {
-        $findByIdDto = new FindById([
+        $findByIdDto = new FindByIdDto([
             'id' => $id
         ]);
         $movie = $this->movieService->getMovie($findByIdDto);
@@ -120,7 +120,7 @@ class MovieController extends Controller
      */
     public function destroy(Int $id): RedirectResponse
     {
-        $findByIdDto = new FindById([
+        $findByIdDto = new FindByIdDto([
             'id' => $id
         ]);
         $this->movieService->deleteMovie($findByIdDto);

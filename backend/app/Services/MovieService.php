@@ -32,7 +32,7 @@ class MovieService implements MovieServiceInterface
         $this->movieRepository->createNewMovie($createRequest);
     }
 
-    public function getMovie(FindById $findByIdDto): Model
+    public function getMovie(FindByIdDto $findByIdDto): Model
     {
         return $this->movieRepository->getMovie($findByIdDto->id);
     }
@@ -42,7 +42,7 @@ class MovieService implements MovieServiceInterface
         $this->movieRepository->updateMovie($updateDto);
     }
 
-    public function deleteMovie(FindById $findByIdDto): Void
+    public function deleteMovie(FindByIdDto $findByIdDto): Void
     {
         $this->movieRepository->deleteMovie($findByIdDto->id);
     }

@@ -10,7 +10,7 @@ interface MovieServiceInterface
 {
     public function getAllMovies();
     public function createNewMovie(CreateDto $createDto);
-    public function getMovie(FindById $findByIdDto);
+    public function getMovie(FindByIdDto $findByIdDto);
     public function updateMovie(UpdateDto $updateDto);
-    public function deleteMovie(FindById $findByIdDto);
+    public function deleteMovie(FindByIdDto $findByIdDto);
 }
