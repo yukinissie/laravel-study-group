@@ -8,7 +8,7 @@ class Movie
     protected string $title;
     protected string $imageUrl;
 
-    public function __construct($movie)
+    public function __construct(object $movie)
     {
         if(isset($movie->id)) $this->id = $movie->id;
         if(isset($movie->title)) $this->title = $movie->title;

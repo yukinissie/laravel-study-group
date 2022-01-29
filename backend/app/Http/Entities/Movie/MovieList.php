@@ -11,7 +11,7 @@ class MovieList
     public function __construct(array $movies)
     {
         $this->movies = array_map(function ($movie) {
-          return new Movie($movie);
+          return new Movie((object) $movie);
         }, $movies);
     }
 }
