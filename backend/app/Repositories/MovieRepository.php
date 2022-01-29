@@ -2,35 +2,37 @@
 
 namespace App\Repositories;
 
-use App\Models\Movie;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\Movie AS MovieModel;
 use App\Http\Dto\Movie\CreateDto;
 use App\Http\Dto\Movie\UpdateDto;
+use App\Http\Entities\Movie\MovieList;
+use App\Http\Entities\Movie\Movie;
 
 class MovieRepository implements MovieRepositoryInterface
 {
-    public function getAllMovies(): Collection
+    public function getAllMovies(): MovieList
     {
-        return Movie::all();
+        $movies = MovieModel::all();
+        return new MovieList($movies->toArray());
     }
 
     public function createNewMovie(CreateDto $createDto): Void
     {
-        Movie::create([
+        MovieModel::create([
             'title' => $createDto->title,
             'image_url' => $createDto->imageUrl
         ]);
     }
 
-    public function getMovie(Int $id): Model
+    public function getMovie(Int $id): Movie
     {
-        return Movie::findOrFail($id);
+        $movie = MovieModel::findOrFail($id);
+        return new Movie($movie);
     }
 
     public function updateMovie(UpdateDto $updateDto): Void
     {
-        Movie::where('id', $updateDto->id)->update([
+        MovieModel::where('id', $updateDto->id)->update([
             'title' => $updateDto->title,
             'image_url' => $updateDto->imageUrl
         ]);
@@ -38,6 +40,6 @@ class MovieRepository implements MovieRepositoryInterface
 
     public function deleteMovie(Int $id): Void
     {
-        Movie::where('id', $id)->delete();
+        MovieModel::where('id', $id)->delete();
     }
 }

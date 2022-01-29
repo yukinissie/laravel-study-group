@@ -3,13 +3,11 @@
 namespace App\Services;
 
 use App\Repositories\MovieRepositoryInterface;
-use App\Http\Requests\CreateMovieRequest;
-use App\Http\Requests\UpdateMovieRequest;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use App\Http\Dto\Movie\CreateDto;
 use App\Http\Dto\Movie\FindByIdDto;
 use App\Http\Dto\Movie\UpdateDto;
+use App\Http\Entities\Movie\MovieList;
+use App\Http\Entities\Movie\Movie;
 
 class MovieService implements MovieServiceInterface
 {
@@ -22,7 +20,7 @@ class MovieService implements MovieServiceInterface
     }
 
 
-    public function getAllMovies(): Collection
+    public function getAllMovies(): MovieList
     {
         return $this->movieRepository->getAllMovies();
     }
@@ -32,7 +30,7 @@ class MovieService implements MovieServiceInterface
         $this->movieRepository->createNewMovie($createRequest);
     }
 
-    public function getMovie(FindByIdDto $findByIdDto): Model
+    public function getMovie(FindByIdDto $findByIdDto): Movie
     {
         return $this->movieRepository->getMovie($findByIdDto->id);
     }
