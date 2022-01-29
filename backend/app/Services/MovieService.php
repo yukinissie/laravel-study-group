@@ -27,7 +27,7 @@ class MovieService implements MovieServiceInterface
 
     public function createNewMovie(CreateDto $createDto): Void
     {
-        $this->movieRepository->createNewMovie($createRequest);
+        $this->movieRepository->createNewMovie($createDto);
     }
 
     public function getMovie(FindByIdDto $findByIdDto): Movie
