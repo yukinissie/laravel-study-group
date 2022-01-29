@@ -25,7 +25,7 @@ class CreateMovieRequest extends FormRequest
     {
         return [
             'title' => ['required', 'unique:movies'],
-            'image_url' => ['required', 'url']
+            'imageUrl' => ['required', 'url']
         ];
     }
 }
