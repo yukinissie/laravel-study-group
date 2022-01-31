@@ -6,6 +6,7 @@ namespace App\Http\Presenters\Movie;
 
 use App\Entities\Movie\MovieList;
 use App\Entities\Movie\Movie;
+use Vinkla\Hashids\Facades\Hashids;
 
 class IndexPresenter
 {
@@ -13,7 +14,7 @@ class IndexPresenter
     {
         return array_map(function (Movie $movie) {
             return [
-                'id' => $movie->getId(),
+                'id' => Hashids::encode($movie->getId()),
                 'title' => $movie->getTitle(),
                 'imageUrl' => $movie->getImageUrl()
             ];

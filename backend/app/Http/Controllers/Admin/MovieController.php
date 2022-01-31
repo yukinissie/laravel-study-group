@@ -68,7 +68,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Int $id, FindByIdPresenter $presenter): View
+    public function show(string $id, FindByIdPresenter $presenter): View
     {
         $findByIdDto = new FindByIdDto([
             'id' => $id
@@ -84,7 +84,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Int $id, FindByIdPresenter $presenter): View
+    public function edit(string $id, FindByIdPresenter $presenter): View
     {
         $findByIdDto = new FindByIdDto([
             'id' => $id
@@ -101,7 +101,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMovieRequest $request, Int $id): RedirectResponse
+    public function update(UpdateMovieRequest $request, string $id): RedirectResponse
     {
         $updateRequest = $request->validated();
         $updateDto = new UpdateDto([
@@ -120,7 +120,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Int $id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         $findByIdDto = new FindByIdDto([
             'id' => $id
