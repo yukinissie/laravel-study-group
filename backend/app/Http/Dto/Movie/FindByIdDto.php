@@ -6,7 +6,7 @@ use App\Http\Dto\BaseDto;
 
 class FindByIdDto extends BaseDto
 {
-    public string $id;
+    public int $id;
 
     public function __construct(array $array)
     {

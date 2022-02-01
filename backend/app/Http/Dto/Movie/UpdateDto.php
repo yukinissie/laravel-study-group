@@ -6,7 +6,7 @@ use App\Http\Dto\BaseDto;
 
 class UpdateDto extends BaseDto
 {
-    public string $id;
+    public int $id;
     public string $title;
     public string $imageUrl;
 

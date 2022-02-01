@@ -13,6 +13,7 @@ use App\Http\Dto\Movie\FindByIdDto;
 use App\Http\Dto\Movie\UpdateDto;
 use App\Http\Presenters\Movie\IndexPresenter;
 use App\Http\Presenters\Movie\FindByIdPresenter;
+use Vinkla\Hashids\Facades\Hashids;
 
 class MovieController extends Controller
 {
@@ -71,7 +72,7 @@ class MovieController extends Controller
     public function show(string $id, FindByIdPresenter $presenter): View
     {
         $findByIdDto = new FindByIdDto([
-            'id' => $id
+            'id' => Hashids::decode($id)[0]
         ]);
         $movie = $this->movieService->getMovie($findByIdDto);
 
@@ -87,7 +88,7 @@ class MovieController extends Controller
     public function edit(string $id, FindByIdPresenter $presenter): View
     {
         $findByIdDto = new FindByIdDto([
-            'id' => $id
+            'id' => Hashids::decode($id)[0]
         ]);
         $movie = $this->movieService->getMovie($findByIdDto);
 
@@ -105,7 +106,7 @@ class MovieController extends Controller
     {
         $updateRequest = $request->validated();
         $updateDto = new UpdateDto([
-            'id' => $id,
+            'id' => Hashids::decode($id)[0],
             'title' => $request->title,
             'imageUrl' => $request->imageUrl
         ]);
@@ -123,7 +124,7 @@ class MovieController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         $findByIdDto = new FindByIdDto([
-            'id' => $id
+            'id' => Hashids::decode($id)[0]
         ]);
         $this->movieService->deleteMovie($findByIdDto);
 
