@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Admin\Movie\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,6 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('movies/test', IndexController::class);
     Route::resource('movies', MovieController::class);
 });
