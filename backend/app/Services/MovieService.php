@@ -9,7 +9,7 @@ use App\Http\Dto\Movie\UpdateDto;
 use App\Entities\Movie\MovieList;
 use App\Entities\Movie\Movie;
 
-class MovieService implements MovieServiceInterface
+class MovieService
 {
     private $movieRepository;
 
