@@ -9,8 +9,12 @@ class MovieServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Repositories\MovieRepositoryInterface::class,
-            \App\Repositories\MovieRepository::class,
+            \App\Services\MovieServiceInterface::class,
+            function ($app) {
+                return new \App\Services\MovieService(
+                    $app->make(\App\Repositories\MovieRepositoryInterface::class)
+                );
+            },
         );
     }
 
