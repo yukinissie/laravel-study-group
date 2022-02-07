@@ -19,7 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::get('movies/test', IndexController::class);
-    Route::resource('movies', MovieController::class);
+Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
+    Route::group(['prefix' => '/movies', 'as' => 'movies.'], function () {
+        require __DIR__ . '/api/movie.php';
+    });
 });
